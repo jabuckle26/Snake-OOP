@@ -1,0 +1,15 @@
+section.game-container{
+    border:2px solid black;
+    height: $game-grid-dimesions;
+    width: $game-grid-dimesions;
+    background-color: $game-grid-background;
+    position: relative;
+}
+
+div.snake-segment {
+    border: 2px solid black;
+    background-color: $snake-color;
+    position: absolute;
+    height: $snake-segment-length;
+    width: $snake-segment-length;
+}

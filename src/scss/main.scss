@@ -1,0 +1,11 @@
+//Vendor imports
+@import 'vendor/reset';
+
+//Module imports
+@import 'modules/variables';
+//Component imports
+@import 'components/game-container';
+
+html {
+    background-color: grey;
+}
