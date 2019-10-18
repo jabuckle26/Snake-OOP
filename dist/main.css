@@ -45,12 +45,23 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+section.title-screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 section.game-container {
   border: 1px solid black;
   height: 500px;
   width: 500px;
   background-color: slategrey;
-  position: relative; }
+  position: relative;
+  display: 'none'; }
 
 div.snake-segment {
   border: 1px solid black;

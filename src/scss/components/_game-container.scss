@@ -4,6 +4,7 @@ section.game-container{
     width: $game-grid-dimesions;
     background-color: $game-grid-background;
     position: relative;
+    display: 'none';
 }
 
 div.snake-segment {
