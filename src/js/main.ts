@@ -19,9 +19,9 @@ const drawSnakeSegments = (snakeSegments) => {
     snakeSegments.forEach(snakeSegment =>{
         console.log(snakeSegment);
         let newSegment = document.createElement('div');
-        newSegment.classList.add('snake-segment')
-        newSegment.style.left = snakeSegment[0];
-        newSegment.style.top = snakeSegment[1];
+        newSegment.classList.add('snake-segment');
+        newSegment.style.left = snakeSegment[0] + 'px';
+        newSegment.style.top = snakeSegment[1] + 'px';
         grid.appendChild(newSegment);
     })
 }
