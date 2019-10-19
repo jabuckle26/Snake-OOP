@@ -10,6 +10,7 @@ export class Snake {
         this.segments.push([30, 10]);
         this.segments.push([20, 10]);
         this.segments.push([10, 10]);
+        this.moving = true;
     }
 
     move = () => {
@@ -24,20 +25,48 @@ export class Snake {
         }
         this.segments.unshift(newHeadLocation);
         this.segments = this.segments.slice(0, -1);
-        }
-
-    changeOrientation = () => {
-        //Get Key
-
-        //Case Switch to set dy and dx for each case
-
-        //return orientation
     }
 
     checkCollision = () => {
-        //check if head co-ordinates are oustide grid
+        const head: number[] = this.segments[0];
+        if (head[0] < -10 || head[0] > 490 || head[1] > 490 || head[1] < -10) {
+            this.moving = false;
+        }
+    }
 
-        //return moving
+    changeOrientation = (ev) => {
+        let direction: string = ev.code;
+        switch (direction) {
+            case "ArrowRight":
+                if (this.dx === 0) {
+                    this.dx = 10;
+                    this.dy = 0;
+                    this.orientation = 'horizontal';
+                }
+                break
+            case "ArrowLeft":
+                if (this.dx === 0) {
+                    this.dx = -10
+                    this.dy = 0;
+                    this.orientation = 'horizontal';
+                }
+                break
+            case "ArrowDown":
+                if (this.dy === 0) {
+                    this.dx = 0;
+                    this.dy = 10;
+                    this.orientation = 'vertical';
+                }
+                break
+            case "ArrowUp":
+                if (this.dy === 0) {
+                    this.dx = 0;
+                    this.dy = -10;
+                    this.orientation = 'vertical';
+                }
+                break
+        }
+        console.log(this.dx, this.dy);
     }
 
     growSnake = () => {

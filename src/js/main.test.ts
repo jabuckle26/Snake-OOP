@@ -13,8 +13,10 @@ import { Snake } from "./classes";
 test("Check initial snake is grown to three segments", () => {
   let snake = new Snake;
   expect(snake.segments.length).toEqual(0);
+  expect(snake.moving).toEqual(false);
   snake.createBabySnake();
   expect(snake.segments.length).toEqual(3);
+  expect(snake.moving).toEqual(true);
 });
 
 test("Check snake is moving correctly", () => {
@@ -25,3 +27,25 @@ test("Check snake is moving correctly", () => {
   expect(snake.segments.length).toEqual(3);
   //Need compare arrays?? Check that previous head is now second value
 });
+
+test("Check if collision occured", () => {
+  let snake = new Snake;
+  snake.createBabySnake();
+  expect(snake.moving).toEqual(true);
+  for (let i = 0; i < 50; i++) {
+    snake.move();
+    snake.checkCollision();
+  }
+  expect(snake.moving).toEqual(false);
+});
+
+const mockReOrientation = (direction:string) =>{
+  //Can this be done without JQUERY??
+}
+
+test("Check if snake changes direction correctly", () =>{
+  let snake = new Snake;
+  snake.createBabySnake();
+  expect(snake.orientation).toEqual('horizontal');
+  // snake.changeOrientation(mockReOrientation('right'))
+})

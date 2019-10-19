@@ -3,17 +3,21 @@ console.log('JAMES');
 
 // DOM FUNCTIONS
 const gameLoop = () => {
+    document.addEventListener("keyup", snake.changeOrientation);
     snake.move();
-    console.log('LEN', snake.segments.length);
     purgeSnakes();
     drawSnakeSegments(snake.segments);
+    snake.checkCollision();
+    //CHECK EATING HERE
+    //GROW HERE
+    if (snake.moving === false) {
+        gameOver();
+    }
 
 }
 
-
 const drawSnakeSegments = (snakeSegments) => {
     let grid = document.querySelector('.game-container');
-
     snakeSegments.forEach(snakeSegment => {
         let newSegment = document.createElement('div');
         newSegment.classList.add('snake-segment');
@@ -25,29 +29,35 @@ const drawSnakeSegments = (snakeSegments) => {
 
 const purgeSnakes = () => {
     const allSegments: NodeList = document.querySelectorAll('.snake-segment');
-    console.log(allSegments, 'JERE');
     Array.from(allSegments).forEach((targetSegment: Element) => {
         targetSegment.remove();
     })
-
 }
 
 
+const gameOver = () => {
+    console.log('GAME OVER!');
+    snake = new Snake;
+    snake.createBabySnake();
+    purgeSnakes();
+    drawSnakeSegments(snake.segments);
+}
+
 //Start game
 document.body.onkeyup = function (e) {
-    console.log('STARTING GAME');
     if (e.code === 'Space') {
+        console.log('STARTING GAME');
+        snake.createBabySnake();
+        drawSnakeSegments(snake.segments);
         let title = <HTMLElement>document.querySelector('.title-screen');
         title.style.display = 'none';
         let gameScreen = <HTMLElement>document.querySelector('.game-container');
         gameScreen.style.display = 'block';
         snake.moving = true;
         //Initialise main game loop - breaks upon death
-        setInterval(gameLoop, 1000);
+        setInterval(gameLoop, globalTimer);
     }
 }
 
+let globalTimer: number = 200;
 let snake = new Snake;
-snake.createBabySnake();
-
-drawSnakeSegments(snake.segments);
