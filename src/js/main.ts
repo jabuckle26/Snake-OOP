@@ -5,8 +5,8 @@ console.log('JAMES');
 const gameLoop = () => {
     snake.move();
     console.log('LEN', snake.segments.length);
-    //purgeSnakes();
-    //drawSnakeSegments(snake.segments);
+    purgeSnakes();
+    drawSnakeSegments(snake.segments);
 
 }
 
@@ -15,7 +15,6 @@ const drawSnakeSegments = (snakeSegments) => {
     let grid = document.querySelector('.game-container');
 
     snakeSegments.forEach(snakeSegment => {
-        //console.log(snakeSegment);
         let newSegment = document.createElement('div');
         newSegment.classList.add('snake-segment');
         newSegment.style.left = snakeSegment[0] + 'px';

@@ -2,7 +2,7 @@
 export class Snake {
     segments: number[][] = [];
     moving: boolean = false;
-    orientation: string = 'right';
+    orientation: string = 'horizontal';
     dx: number = 10;
     dy: number = 0;
 
@@ -13,16 +13,18 @@ export class Snake {
     }
 
     move = () => {
-        //console.log(this.segments);
-        let newHeadLocation: number[] = this.segments[0];
-        //console.log(newHeadLocation);
-        if (this.orientation === 'right') {
+        let newHeadLocation: number[] = this.segments[0].map(i => {
+            return i
+        });
+        if (this.orientation === 'horizontal') {
             newHeadLocation[0] += this.dx;
+        }
+        else if (this.orientation === 'vertical') {
+            newHeadLocation[1] += this.dy;
         }
         this.segments.unshift(newHeadLocation);
         this.segments = this.segments.slice(0, -1);
-        console.log('HERE', this.segments);
-    }
+        }
 
     changeOrientation = () => {
         //Get Key
