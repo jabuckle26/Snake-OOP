@@ -14,3 +14,11 @@ div.snake-segment {
     height: $snake-segment-length;
     width: $snake-segment-length;
 }
+
+div.food {
+    border:1px solid white;
+    background-color: $food-color;
+    position: absolute;
+    height: $snake-segment-length;
+    width: $snake-segment-length;
+}

@@ -1,4 +1,5 @@
 import { Snake } from "./classes";
+import { Food } from "./classes";
 
 // These won't work??
 // describe("These are my class tests", () => {
@@ -48,4 +49,17 @@ test("Check if snake changes direction correctly", () =>{
   snake.createBabySnake();
   expect(snake.orientation).toEqual('horizontal');
   // snake.changeOrientation(mockReOrientation('right'))
-})
+});
+
+test("Check that food is created randomly within grid", () => {
+  let food = new Food;
+  expect(food.x).toBeGreaterThan(20);
+  expect(food.y).toBeGreaterThan(20);
+  expect(food.x).toBeLessThan(480);
+  expect(food.y).toBeLessThan(480);
+  food.createNewFood();
+  expect(food.x).toBeGreaterThan(20);
+  expect(food.y).toBeGreaterThan(20);
+  expect(food.x).toBeLessThan(480);
+  expect(food.y).toBeLessThan(480);
+});

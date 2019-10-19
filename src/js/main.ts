@@ -1,4 +1,5 @@
 import { Snake } from "./classes";
+import { Food } from "./classes";
 console.log('JAMES');
 
 // DOM FUNCTIONS
@@ -13,7 +14,6 @@ const gameLoop = () => {
     if (snake.moving === false) {
         gameOver();
     }
-
 }
 
 const drawSnakeSegments = (snakeSegments) => {
@@ -34,6 +34,14 @@ const purgeSnakes = () => {
     })
 }
 
+const drawFood = (x, y) => {
+    let grid = document.querySelector('.game-container');
+    let newFood = document.createElement('div');
+    newFood.classList.add('food');
+    newFood.style.left = x +'px';
+    newFood.style.top = y +'px';
+    grid.appendChild(newFood);
+}
 
 const gameOver = () => {
     console.log('GAME OVER!');
@@ -47,8 +55,11 @@ const gameOver = () => {
 document.body.onkeyup = function (e) {
     if (e.code === 'Space') {
         console.log('STARTING GAME');
+        console.log('creating snake')
         snake.createBabySnake();
         drawSnakeSegments(snake.segments);
+        console.log('creating food');
+        drawFood(food.x, food.y);
         let title = <HTMLElement>document.querySelector('.title-screen');
         title.style.display = 'none';
         let gameScreen = <HTMLElement>document.querySelector('.game-container');
@@ -61,3 +72,4 @@ document.body.onkeyup = function (e) {
 
 let globalTimer: number = 200;
 let snake = new Snake;
+let food = new Food;

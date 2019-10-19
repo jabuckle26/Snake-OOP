@@ -74,3 +74,16 @@ export class Snake {
         //
     }
 }
+
+
+export class Food {
+    x: number = Math.floor(Math.random()*(480 -20 + 1))+20;
+    y: number = Math.floor(Math.random()*(480 -20 + 1))+20;
+
+    createNewFood = () => {
+        ///Update to ensure not created inside snake!
+
+        this.x = Math.floor(Math.random()*(480 -20 + 1))+20;
+        this.y = Math.floor(Math.random()*(480 -20 + 1))+20;
+    }
+}
