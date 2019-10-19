@@ -51,6 +51,16 @@ test("Check if snake changes direction correctly", () =>{
   // snake.changeOrientation(mockReOrientation('right'))
 });
 
+test("Check snake grows correctly", () =>{
+  let snake = new Snake;
+  snake.createBabySnake();
+  expect(snake.segments.length).toEqual(3);
+  snake.growSnake();
+  expect(snake.segments.length).toEqual(4);
+  snake.growSnake();
+  expect(snake.segments.length).toEqual(5);
+});
+
 test("Check that food is created randomly within grid", () => {
   let food = new Food;
   expect(food.x).toBeGreaterThan(20);
@@ -63,3 +73,4 @@ test("Check that food is created randomly within grid", () => {
   expect(food.x).toBeLessThan(480);
   expect(food.y).toBeLessThan(480);
 });
+

@@ -9,18 +9,16 @@ const gameLoop = () => {
     purgeSnakes();
     drawSnakeSegments(snake.segments);
     snake.checkCollision();
-    //CHECK EATING HERE
-    console.log(snake.segments[0][0], snake.segments[0][1])
     if (snake.segments[0][0] === food.x && snake.segments[0][1] === food.y) {
         console.log('EATEN FOOD');
         snake.growSnake();
         food.createNewFood();
         drawFood(food.x, food.y);
     }
-    //GROW HERE
     if (snake.moving === false) {
         gameOver();
     }
+    console.log(snake.segments.length);
 }
 
 const drawSnakeSegments = (snakeSegments) => {
@@ -44,7 +42,6 @@ const purgeSnakes = () => {
 const drawFood = (x, y) => {
     console.log('FOOD', x,y)
     let grid = document.querySelector('.game-container');
-    console.log('JAMEs', document.querySelector('.food'));
     if (document.querySelector('.food') === null) {
     let newFood = document.createElement('div');
     newFood.classList.add('food');

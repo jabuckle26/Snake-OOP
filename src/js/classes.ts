@@ -5,6 +5,7 @@ export class Snake {
     orientation: string = 'horizontal';
     dx: number = 10;
     dy: number = 0;
+    justEaten: boolean = false;
 
     createBabySnake = () => {
         this.segments.push([30, 10]);
@@ -17,14 +18,23 @@ export class Snake {
         let newHeadLocation: number[] = this.segments[0].map(i => {
             return i
         });
-        if (this.orientation === 'horizontal') {
-            newHeadLocation[0] += this.dx;
+        if (this.justEaten) {
+            if (this.orientation === 'horizontal') {
+                this.segments[0][0] += this.dx;
+            } else if (this.orientation === 'vertical') {
+                this.segments[0][1] += this.dy;
+            }
+            this.justEaten = false;
+        } else {
+            if (this.orientation === 'horizontal') {
+                newHeadLocation[0] += this.dx;
+            }
+            else if (this.orientation === 'vertical') {
+                newHeadLocation[1] += this.dy;
+            };
+            this.segments.unshift(newHeadLocation);
+            this.segments = this.segments.slice(0, -1);
         }
-        else if (this.orientation === 'vertical') {
-            newHeadLocation[1] += this.dy;
-        }
-        this.segments.unshift(newHeadLocation);
-        this.segments = this.segments.slice(0, -1);
     }
 
     checkCollision = () => {
@@ -66,12 +76,15 @@ export class Snake {
                 }
                 break
         }
-        console.log(this.dx, this.dy);
     }
 
     growSnake = () => {
-        //when snake has eaten something
-        //
+        console.log('GROW');
+        this.justEaten = true;
+        const headLocation: number[] = this.segments[0].map(i => {
+            return i
+        });
+        this.segments.splice(1, 0, headLocation);
     }
 }
 
@@ -89,10 +102,5 @@ export class Food {
 
         this.x = Math.round((Math.random() * this.multiplier) / 10) * 10;
         this.y = Math.round((Math.random() * this.multiplier) / 10) * 10;
-
     }
-}
-
-function rand_10(min, max) {
-    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
 }
