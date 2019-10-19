@@ -77,13 +77,22 @@ export class Snake {
 
 
 export class Food {
-    x: number = Math.floor(Math.random()*(480 -20 + 1))+20;
-    y: number = Math.floor(Math.random()*(480 -20 + 1))+20;
+    max: number = Math.floor(480);
+    min: number = Math.ceil(20);
+    multiplier: number = this.max - this.min + 1;
+
+    x: number = Math.round((Math.random() * this.multiplier) / 10) * 10;
+    y: number = Math.round((Math.random() * this.multiplier) / 10) * 10;
 
     createNewFood = () => {
         ///Update to ensure not created inside snake!
 
-        this.x = Math.floor(Math.random()*(480 -20 + 1))+20;
-        this.y = Math.floor(Math.random()*(480 -20 + 1))+20;
+        this.x = Math.round((Math.random() * this.multiplier) / 10) * 10;
+        this.y = Math.round((Math.random() * this.multiplier) / 10) * 10;
+
     }
+}
+
+function rand_10(min, max) {
+    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
 }
