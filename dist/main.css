@@ -45,17 +45,69 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@-webkit-keyframes Title-Flicker {
+  0% {
+    color: #65f703; }
+  20% {
+    color: #26d320; }
+  40% {
+    color: #288d28; }
+  60% {
+    color: #288d28; }
+  80% {
+    color: #26d320; }
+  100% {
+    color: #65f703; } }
+
+@-webkit-keyframes SubTitle-Flicker {
+  0% {
+    color: #f703f7; }
+  20% {
+    color: #c612d6; }
+  40% {
+    color: #6e0477; }
+  60% {
+    color: #6e0477; }
+  80% {
+    color: #c612d6; }
+  100% {
+    color: #f703f7; } }
+
 body {
-  font-family: 'Press Start 2P', cursive, Arial;
-  font-size: 32px; }
+  font-family: 'Press Start 2P', cursive, Arial; }
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 100px;
+  animation: Title-Flicker 2s infinite; }
+
+h2 {
+  font-size: 30px;
+  margin: 5px 0; }
+  h2#sub-title {
+    animation: SubTitle-Flicker 2s infinite; }
+  h2.caption {
+    color: #16e20e; }
+
+h3 {
+  margin-top: 5px;
+  font-size: 25px; }
+  h3.caption {
+    color: #d83cff; }
 
 section.title-screen {
   width: 100vw;
   height: 100vh;
   background-color: black;
   color: white;
-  display: block;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+section.game-screen {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center; }
 
@@ -63,23 +115,23 @@ div.game-container {
   border: 1px solid black;
   height: 500px;
   width: 500px;
-  background-color: slategrey;
+  background-color: #2d2e2e;
   position: relative;
   display: 'none'; }
 
 div.snake-segment {
   border: 1px solid black;
-  background-color: seagreen;
+  background-color: #16e20e;
   position: absolute;
   height: 10px;
   width: 10px; }
 
 div.food {
-  border: 1px solid white;
-  background-color: pink;
+  border: 1px solid #800691;
+  background-color: #d83cff;
   position: absolute;
   height: 10px;
   width: 10px; }
 
 html {
-  background-color: lightgrey; }
+  background-color: #f3ecec; }

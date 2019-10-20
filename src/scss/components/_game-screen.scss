@@ -1,3 +1,10 @@
+section.game-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 div.game-container{
     border:1px solid black;
     height: $game-grid-dimesions;
@@ -16,7 +23,7 @@ div.snake-segment {
 }
 
 div.food {
-    border:1px solid white;
+    border:1px solid rgb(128, 6, 145);
     background-color: $food-color;
     position: absolute;
     height: $snake-segment-length;

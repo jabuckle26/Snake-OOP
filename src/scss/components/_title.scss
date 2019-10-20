@@ -3,8 +3,8 @@ section.title-screen {
     height:100vh;
     background-color: black;
     color: white;
-    display: block;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

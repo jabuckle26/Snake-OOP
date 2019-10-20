@@ -3,11 +3,12 @@
 
 //Module imports
 @import 'modules/variables';
+@import 'modules/animations';
 @import 'modules/typography';
 //Component imports
 @import 'components/title';
 @import 'components/game-screen';
 
 html {
-    background-color: lightgrey;
+    background-color: rgb(243, 236, 236);
 }

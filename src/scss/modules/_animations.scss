@@ -1,0 +1,17 @@
+@-webkit-keyframes Title-Flicker {
+    0% {color: rgb(101, 247, 3)}
+    20% {color: rgb(38, 211, 32);}
+    40% {color: rgb(40, 141, 40);}
+    60% {color: rgb(40, 141, 40);}
+    80% {color: rgb(38, 211, 32);}
+    100% {color: rgb(101, 247, 3)}
+}
+
+@-webkit-keyframes SubTitle-Flicker {
+    0% {color: rgb(247, 3, 247)}
+    20% {color: rgb(198, 18, 214);}
+    40% {color: rgb(110, 4, 119);}
+    60% {color: rgb(110, 4, 119);}
+    80% {color: rgb(198, 18, 214);}
+    100% {color: rgb(247, 3, 247)}
+}

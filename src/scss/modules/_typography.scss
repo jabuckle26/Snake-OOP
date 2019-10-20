@@ -1,4 +1,31 @@
 body {
     font-family: 'Press Start 2P', cursive, Arial;
-    font-size: 32px;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 100px;
+    animation: Title-Flicker 2s infinite;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 5px 0;
+
+    &#sub-title {
+        animation: SubTitle-Flicker 2s infinite;
+    }
+
+    &.caption {
+        color: $snake-color
+    }
+}
+
+h3{
+    margin-top: 5px;
+    font-size: 25px;
+
+    &.caption {
+        color: $food-color;
+    }
 }
