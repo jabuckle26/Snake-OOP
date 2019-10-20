@@ -39,11 +39,25 @@ export class Snake {
 
     checkCollision = () => {
         const head: number[] = this.segments[0];
+        //Collide with wall?
         if (head[0] < -10 || head[0] > 490 || head[1] > 490 || head[1] < -10) {
             this.moving = false;
-        }
+        } else if(this.internalCheck(head[0],head[1])) {//inside snake
+            this.moving = false;
+        };
     }
 
+    internalCheck = (x,y) => {
+        //To check if the given piece exists in snake
+        let isInSnake = false;
+        const segmentsToCheck = this.segments.slice(1, this.segments.length);
+        segmentsToCheck.forEach(segment => {
+            if (segment[0]===x && segment[1]===y){
+                isInSnake = true
+            };
+        })
+        return isInSnake;
+    }
     changeOrientation = (ev) => {
         let direction: string = ev.code;
         switch (direction) {
@@ -79,7 +93,6 @@ export class Snake {
     }
 
     growSnake = () => {
-        console.log('GROW');
         this.justEaten = true;
         const headLocation: number[] = this.segments[0].map(i => {
             return i

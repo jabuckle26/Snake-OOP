@@ -61,6 +61,37 @@ test("Check snake grows correctly", () =>{
   expect(snake.segments.length).toEqual(5);
 });
 
+test("Check that snake cannot overlap itself", () =>{
+  let snake = new Snake;
+  snake.createBabySnake();
+  snake.growSnake();
+  snake.move();
+  snake.growSnake();
+  snake.move();
+  snake.growSnake();
+  snake.move();
+  expect(snake.moving).toEqual(true);
+  //move down
+  snake.orientation = 'vertical';
+  snake.dx = 0;
+  snake.dy = 10;
+  snake.move();
+  snake.checkCollision();
+  expect(snake.moving).toEqual(true);
+  snake.orientation = 'horizontal';
+  snake.dx = -10;
+  snake.dy = 0;
+  snake.move();
+  snake.checkCollision();
+  expect(snake.moving).toEqual(true);
+  snake.orientation = 'vertical';
+  snake.dx = 0;
+  snake.dy = -10;
+  snake.move();
+  snake.checkCollision();
+  expect(snake.moving).toEqual(false);
+});
+
 test("Check that food is created randomly within grid", () => {
   let food = new Food;
   expect(food.x).toBeGreaterThan(20);
