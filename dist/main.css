@@ -59,7 +59,7 @@ section.title-screen {
   justify-content: center;
   align-items: center; }
 
-section.game-container {
+div.game-container {
   border: 1px solid black;
   height: 500px;
   width: 500px;
@@ -82,4 +82,4 @@ div.food {
   width: 10px; }
 
 html {
-  background-color: grey; }
+  background-color: lightgrey; }

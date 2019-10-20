@@ -12,10 +12,13 @@ const gameLoop = () => {
         snake.growSnake();
         food.createNewFood();
         drawFood(food.x, food.y);
-        score += 1;
-        drawScore();
+        score++;
+        updateScore();
     }
     if (snake.moving === false) {
+        score = 0;
+        console.log(score);
+        updateScore();
         gameOver();
     }
 }
@@ -54,8 +57,9 @@ const drawFood = (x, y) => {
     }
 }
 
-const drawScore = () => {
-    ///Placeholder
+const updateScore = () => {
+    let scoreText = <HTMLElement>document.querySelector('.score-holder');
+    scoreText.innerHTML = `Score: ${score}`;
 }
 
 const gameOver = () => {
