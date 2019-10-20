@@ -12,11 +12,12 @@ const gameLoop = () => {
         snake.growSnake();
         food.createNewFood();
         drawFood(food.x, food.y);
+        score += 1;
+        drawScore();
     }
     if (snake.moving === false) {
         gameOver();
     }
-    console.log(snake.segments.length);
 }
 
 const drawSnakeSegments = (snakeSegments) => {
@@ -53,6 +54,10 @@ const drawFood = (x, y) => {
     }
 }
 
+const drawScore = () => {
+    ///Placeholder
+}
+
 const gameOver = () => {
     console.log('GAME OVER!');
     snake = new Snake;
@@ -61,7 +66,7 @@ const gameOver = () => {
     drawSnakeSegments(snake.segments);
 }
 
-//Start game
+//Start game -- INITIAL SETUP
 document.body.onkeyup = function (e) {
     if (e.code === 'Space') {
         snake.createBabySnake();
@@ -72,11 +77,14 @@ document.body.onkeyup = function (e) {
         let gameScreen = <HTMLElement>document.querySelector('.game-container');
         gameScreen.style.display = 'block';
         snake.moving = true;
-        //Initialise main game loop - breaks upon death
+        
+        //Initialise main game loop
         setInterval(gameLoop, globalTimer);
     }
 }
 
+//Global variables
 let globalTimer: number = 100;
 let snake = new Snake;
 let food = new Food;
+let score: number = 0;
