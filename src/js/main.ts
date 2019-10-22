@@ -1,5 +1,6 @@
 import { Snake } from "./classes";
 import { Food } from "./classes";
+import { Grid } from "./classes"
 
 // DOM FUNCTIONS
 const gameLoop = () => {
@@ -10,6 +11,7 @@ const gameLoop = () => {
     snake.checkCollision();
     if (snake.segments[0][0] === food.x && snake.segments[0][1] === food.y) {
         snake.growSnake();
+        grid.genOccupiedArray(snake.segments);
         food.createNewFood();
         drawFood(food.x, food.y);
         score++;
@@ -81,6 +83,7 @@ document.body.onkeyup = function (e) {
         let gameScreen = <HTMLElement>document.querySelector('.game-container');
         gameScreen.style.display = 'block';
         snake.moving = true;
+        grid.genTemplateGrid();
         
         //Initialise main game loop
         setInterval(gameLoop, globalTimer);
@@ -92,3 +95,4 @@ let globalTimer: number = 100;
 let snake = new Snake;
 let food = new Food;
 let score: number = 0;
+let grid = new Grid;
