@@ -117,3 +117,18 @@ export class Food {
         this.y = Math.round((Math.random() * this.multiplier) / 10) * 10;
     }
 }
+
+export class Grid {
+    
+    genTemplateGrid = () => {
+        let templateGrid: number[][] = [];
+
+        let x: number;
+        let y: number;
+
+        for (x=0; x<=500; x + 10) {
+            //NEST LOOP
+        }
+
+    }
+}
