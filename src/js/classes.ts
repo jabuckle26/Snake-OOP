@@ -119,24 +119,16 @@ export class Food {
 }
 
 export class Grid {
-    templateGrid: number[][];
-    filteredGrid: number[][];
+    
     genTemplateGrid = () => {
+        let templateGrid: number[][] = [];
+
         let x: number;
         let y: number;
 
         for (x=0; x<=500; x + 10) {
-            for (y=0;y<=500; y+10) {
-                this.templateGrid.push([x,y]);
-            }
+            //NEST LOOP
         }
-    }
 
-    genOccupiedArray = (snakeSegments) => {
-        this.filteredGrid = this.templateGrid.filter(gridCell => {
-            snakeSegments.forEach(segment => {
-                return (segment[0] === gridCell[0] && segment[1]=== gridCell[1]) 
-            })
-        })
     }
 }
